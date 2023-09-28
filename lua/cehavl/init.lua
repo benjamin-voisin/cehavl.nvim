@@ -26,8 +26,10 @@ local function cehavl_word(word)
     return result
 end
 
-local function get_word_under_cursor()
-    return "cheval"
+function cehavl.setup(table)
+    if table['default_keymaps'] then
+        vim.keymap.set('n', '<leader>ch', ':Cehavl<cr>')
+    end
 end
 
 function cehavl.cehavl_word_under_cursor()
