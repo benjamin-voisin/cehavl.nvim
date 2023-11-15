@@ -33,6 +33,7 @@ function cehavl.setup(table)
         vim.keymap.set('n', '<leader>ch', ':Cehavl<cr>')
         vim.keymap.set('n', '<leader>cha', ':CehavlAll<cr>')
     end
+    cehavl.is_setup = true
 end
 
 function cehavl.cehavl_word_under_cursor()
