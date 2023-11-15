@@ -26,9 +26,12 @@ local function cehavl_word(word)
     return result
 end
 
+
+
 function cehavl.setup(table)
     if table['default_keymaps'] then
         vim.keymap.set('n', '<leader>ch', ':Cehavl<cr>')
+        vim.keymap.set('n', '<leader>cha', ':CehavlAll<cr>')
     end
 end
 
@@ -36,6 +39,12 @@ function cehavl.cehavl_word_under_cursor()
     local current_word = vim.call('expand', '<cword>')
     local new_word = cehavl_word(current_word)
     vim.cmd("normal! ciw" ..  new_word)
+end
+
+function cehavl.cehavl_all_occurences_under_cursor()
+    local current_word = vim.call('expand', '<cword>')
+    local new_word = cehavl_word(current_word)
+    vim.lsp.buf.rename(new_word)
 end
 
 return cehavl
